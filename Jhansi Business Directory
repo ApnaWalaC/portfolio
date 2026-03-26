@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhansi Business Directory | Local Services</title>
+    <!-- Modern Styling with Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
+        .category-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Navigation Bar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-200">
+                        <i class="fas fa-city text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-800">Jhansi<span class="text-blue-600">Explore</span></span>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                    <a href="#" class="hover:text-blue-600 transition">Browse</a>
+                    <a href="#" class="hover:text-blue-600 transition">Categories</a>
+                    <button class="bg-slate-900 text-white px-5 py-2.5 rounded-full hover:bg-slate-800 transition shadow-md">Add Listing</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-white pt-16 pb-12 border-b border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase bg-blue-50 rounded-full">
+                The Heart of Bundelkhand
+            </span>
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-6 sm:text-6xl tracking-tight leading-tight">
+                Discover the best <br><span class="text-blue-600">Local Businesses</span>
+            </h1>
+            <p class="text-lg text-slate-500 mb-10 max-w-2xl mx-auto">
+                Sadar Bazaar se lekar Medical College Road tak, Jhansi ki sabhi top services aur shops ab ek hi jagah.
+            </p>
+            
+            <!-- Custom Search Bar -->
+            <div class="relative max-w-2xl mx-auto group">
+                <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition"></i>
+                <input type="text" id="directorySearch" placeholder="Service search karein (e.g. Electrician, Salon, School...)" 
+                    class="w-full pl-14 pr-6 py-5 rounded-2xl border border-slate-200 shadow-2xl shadow-slate-200/50 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:outline-none transition-all text-lg">
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Filters -->
+    <div class="max-w-7xl mx-auto px-4 py-10">
+        <div class="flex flex-wrap gap-3 justify-center" id="categoryContainer">
+            <button onclick="filterItems('All')" class="category-btn active px-6 py-2.5 rounded-full border border-slate-200 bg-white hover:border-blue-400 transition text-sm font-bold">All Listings</button>
+            <button onclick="filterItems('Food')" class="category-btn px-6 py-2.5 rounded-full border border-slate-200 bg-white hover:border-blue-400 transition text-sm font-bold">Restaurants</button>
+            <button onclick="filterItems('Education')" class="category-btn px-6 py-2.5 rounded-full border border-slate-200 bg-white hover:border-blue-400 transition text-sm font-bold">Education</button>
+            <button onclick="filterItems('Services')" class="category-btn px-6 py-2.5 rounded-full border border-slate-200 bg-white hover:border-blue-400 transition text-sm font-bold">Home Services</button>
+            <button onclick="filterItems('Health')" class="category-btn px-6 py-2.5 rounded-full border border-slate-200 bg-white hover:border-blue-400 transition text-sm font-bold">Healthcare</button>
+        </div>
+    </div>
+
+    <!-- Listings Grid -->
+    <main class="max-w-7xl mx-auto px-4 pb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="businessGrid">
+            <!-- JavaScript will populate cards here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-10 text-center">
+        <p class="text-slate-400 text-sm font-medium">© 2024 JhansiExplore Portfolio Project by apnawalac</p>
+    </footer>
+
+    <script>
+        // Data Structure
+        const businesses = [
+            {
+                name: "Style Glow Parlour",
+                cat: "Health",
+                loc: "Sadar Bazaar, Jhansi",
+                star: 4.8,
+                rev: 120,
+                tags: ["Beauty", "Makeup"],
+                tel: "+91 9876543210"
+            },
+            {
+                name: "Quick Fix Electricians",
+                cat: "Services",
+                loc: "Sipri Bazar, Jhansi",
+                star: 4.5,
+                rev: 85,
+                tags: ["Electrician", "Home"],
+                tel: "+91 9123456789"
+            },
+            {
+                name: "Apex Coaching Classes",
+                cat: "Education",
+                loc: "Civil Lines, Jhansi",
+                star: 4.9,
+                rev: 450,
+                tags: ["IIT-JEE", "Class X"],
+                tel: "+91 8888877777"
+            },
+            {
+                name: "Bundelkhand Dhaba",
+                cat: "Food",
+                loc: "Elite Crossing, Jhansi",
+                star: 4.2,
+                rev: 1200,
+                tags: ["Veg", "Thali"],
+                tel: "+91 7777766666"
+            },
+            {
+                name: "City Diagnostic Lab",
+                cat: "Health",
+                loc: "Medical College Rd, Jhansi",
+                star: 4.6,
+                rev: 320,
+                tags: ["Pathology", "Test"],
+                tel: "+91 9999988888"
+            },
+            {
+                name: "Jhansi Home Decor",
+                cat: "Services",
+                loc: "Manik Chowk, Jhansi",
+                star: 4.4,
+                rev: 55,
+                tags: ["Interior", "Paint"],
+                tel: "+91 9000011111"
+            }
+        ];
+
+        function drawCards(data) {
+            const grid = document.getElementById('businessGrid');
+            grid.innerHTML = data.map(b => `
+                <div class="bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 overflow-hidden group">
+                    <div class="h-44 bg-slate-100 flex items-center justify-center relative group-hover:bg-blue-600 transition-colors duration-500">
+                        <i class="fas fa-building text-slate-300 text-6xl group-hover:text-white/30 transition-all duration-500 group-hover:scale-110"></i>
+                        <span class="absolute top-5 left-5 bg-white/90 backdrop-blur-sm text-slate-800 text-[10px] px-3 py-1 rounded-full font-extrabold uppercase tracking-widest shadow-sm">
+                            ${b.cat}
+                        </span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition-colors">${b.name}</h3>
+                            <div class="flex items-center text-amber-500 font-bold text-sm bg-amber-50 px-2 py-1 rounded-lg">
+                                <i class="fas fa-star mr-1"></i> ${b.star}
+                            </div>
+                        </div>
+                        <p class="text-slate-500 text-sm mb-5 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i> ${b.loc}
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            ${b.tags.map(t => `<span class="bg-slate-50 text-slate-500 text-[10px] px-3 py-1 rounded-full font-bold border border-slate-100">#${t}</span>`).join('')}
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="tel:${b.tel}" class="flex-1 bg-slate-900 text-white text-center py-3.5 rounded-2xl font-bold hover:bg-blue-600 transition shadow-lg active:scale-95 flex items-center justify-center gap-2">
+                                <i class="fas fa-phone-alt text-xs"></i> Call Vendor
+                            </a>
+                            <button class="w-12 h-12 flex items-center justify-center border border-slate-200 rounded-2xl hover:bg-slate-50 transition">
+                                <i class="far fa-heart text-slate-400"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Live Search Logic
+        document.getElementById('directorySearch').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = businesses.filter(b => 
+                b.name.toLowerCase().includes(query) || 
+                b.cat.toLowerCase().includes(query) ||
+                b.tags.some(t => t.toLowerCase().includes(query))
+            );
+            drawCards(filtered);
+        });
+
+        // Category Filter Logic
+        function filterItems(category) {
+            // UI Toggle
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.includes(category)) btn.classList.add('active');
+            });
+
+            if (category === 'All') {
+                drawCards(businesses);
+            } else {
+                drawCards(businesses.filter(b => b.cat === category));
+            }
+        }
+
+        // Initialize
+        drawCards(businesses);
+    </script>
+</body>
+</html>
