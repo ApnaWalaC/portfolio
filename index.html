@@ -12,6 +12,71 @@
         .skill-card:hover { transform: translateY(-5px); transition: 0.3s; }
         .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
     </style>
+    <style>
+        /* Projects Section Specific Styling */
+        .projects-section {
+            padding: 4rem 0;
+            background-color: #f1f5f9;
+        }
+        .projects-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 2rem;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+        .project-card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-image {
+            width: 100%;
+            height: 180px;
+            background-color: #ddd; /* Temporary placeholder for image */
+            object-fit: cover;
+        }
+        .project-info {
+            padding: 1rem;
+        }
+        .project-tag {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #1e293b;
+            background: #d1fae5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+        .project-heading {
+            margin: 0.5rem 0;
+            font-size: 1.25rem;
+            color: #111827;
+        }
+        .project-desc {
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -112,6 +177,21 @@
         </div>
         <div class="mt-12">
             <a href="https://drive.google.com/file/d/1srlUbSJa_DqjAmEQL2U30V4YQ-64cCWR/view?usp=drivesdk" download="K.K.Resume.pdf" class="bg-blue-600 text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-blue-700 transition inline-block">Download My CV</a>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="projects-title">My Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-info">
+                        <span class="project-tag">WordPress/UI Demo</span>
+                        <h3 class="project-heading">Jhansi Business Directory</h3>
+                        <p class="project-desc">A professional frontend interface for a local service directory website, designed for WordPress integration.</p>
+                        <a href="#" class="project-link">View Demo</a> </div>
+                </article>
+                </div>
         </div>
     </section>
 
